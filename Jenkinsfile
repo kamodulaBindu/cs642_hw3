@@ -1,6 +1,5 @@
 
 pipeline {
-  browsers: ['ChromeHeadlessNoSandbox'],
   agent {
     docker { image 'node:latest' }
   }
@@ -10,8 +9,10 @@ pipeline {
     }
 
     stage('Test') {
+      withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
             steps { sh 'npm run-script test' }
       }
+    }
 
     stage('Build') {
       steps { sh 'npm run-script build' }
