@@ -1,5 +1,6 @@
 
 pipeline {
+  browsers: ['ChromeHeadlessNoSandbox'],
   agent {
     docker { image 'node:latest' }
   }
