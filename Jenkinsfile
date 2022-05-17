@@ -10,15 +10,7 @@ pipeline {
         stash includes: 'node_modules/', name: 'node_modules'
       }
     }
-    stage('Lint') {
-      agent {
-        docker 'circleci/node:9.3-stretch-browsers'
-      }
-      steps {
-        unstash 'node_modules'
-        sh 'yarn lint'
-      }
-    }
+    
     stage('Unit Test') {
       agent {
         docker 'circleci/node:9.3-stretch-browsers'
@@ -29,7 +21,7 @@ pipeline {
         junit 'reports/**/*.xml'
       }
     }
-    stage('E2E Test') {
+    stage('Test') {
       agent {
         docker 'circleci/node:9.3-stretch-browsers'
       }
