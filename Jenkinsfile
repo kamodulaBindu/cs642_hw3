@@ -9,9 +9,7 @@ pipeline {
     }
 
     stage('Test') {
-        stage('Unit tests') {
             steps { sh 'npm run-script test' }
-        }
       }
 
     stage('Build') {
