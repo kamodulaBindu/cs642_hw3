@@ -9,10 +9,8 @@ pipeline {
     }
 
     stage('Test') {
-        withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
-          sh 'ng test --progress=false --watch false'
-        }
-    }
+            steps { sh 'npm run-script test' }
+      }
 
     stage('Build') {
       steps { sh 'npm run-script build' }
